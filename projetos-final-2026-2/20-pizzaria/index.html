@@ -7,39 +7,6 @@
   <title>Bella Napoli Pizzaria</title>
   <meta name="description" content="Cardápio interativo com pedido (carrinho JS)." />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .produtos { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-    .produto {
-      background:#fff; padding:20px; border-radius:var(--radius);
-      box-shadow:var(--shadow); text-align:center;
-    }
-    .produto .img { font-size:3.5rem; margin-bottom:10px; }
-    .produto .preco { font-weight:800; color:var(--primary); font-size:1.2rem; margin:8px 0; }
-    .produto button {
-      background:var(--primary); color:#fff; border:0; padding:10px 16px;
-      border-radius:8px; cursor:pointer; font-weight:600;
-    }
-    .produto button:hover { opacity:.9; }
-
-    /* Carrinho lateral (drawer) */
-    .carrinho-icone {
-      position:fixed; bottom:20px; right:20px;
-      background:var(--primary); color:#fff; padding:14px 18px;
-      border-radius:999px; cursor:pointer; font-weight:700;
-      box-shadow:var(--shadow); z-index:60; border:0;
-    }
-    .drawer {
-      position:fixed; top:0; right:-380px; width:360px; max-width:90vw; height:100vh;
-      background:#fff; box-shadow:-4px 0 20px rgba(0,0,0,.15);
-      transition: right .3s ease; z-index:70; display:flex; flex-direction:column;
-    }
-    .drawer.aberto { right:0; }
-    .drawer header { background:var(--primary); color:#fff; padding:18px; display:flex; justify-content:space-between; align-items:center; }
-    .drawer .itens { flex:1; overflow-y:auto; padding:16px; }
-    .drawer .item-c { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee; }
-    .drawer footer { padding:18px; border-top:1px solid #eee; background:#fff; color:#111; }
-    .remover { background:transparent; border:0; color:#dc2626; cursor:pointer; font-size:1.1rem; }
-  </style>
 </head>
 <body>
   <header class="site-header">
@@ -55,9 +22,32 @@
   </header>
 
   <section class="hero" id="inicio">
-    <h1>Bella Napoli Pizzaria</h1>
-    <p>Cardápio interativo com pedido (carrinho JS).</p>
-    <a href="#produtos" class="btn">Ver cardápio</a>
+    <h1 class="sr-only">Bella Napoli Pizzaria — Sabor que vem da Itália</h1>
+    <div class="hero__media">
+      <img
+        src="imagens/banner.png"
+        alt="Pizza Margherita recém-saída do forno, com fumaça subindo, ao lado da marca Bella Napoli Pizzaria"
+      />
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__wisp hero__wisp--1"></div>
+    <div class="hero__wisp hero__wisp--2"></div>
+    <div class="hero__wisp hero__wisp--3"></div>
+    <div class="hero__wisp hero__wisp--4"></div>
+    <div class="hero__content">
+      <span class="hero__eyebrow">Direto do forno a lenha</span>
+      <a href="#produtos" class="hero__cta">Ver cardápio</a>
+    </div>
+    <svg class="hero__wave" viewBox="0 0 2880 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="hero__wave-path--back"
+        d="M0,55 C160,10 320,95 480,55 C640,15 800,95 960,55 C1120,15 1280,95 1440,55
+           C1600,15 1760,95 1920,55 C2080,15 2240,95 2400,55 C2560,15 2720,95 2880,55
+           L2880,120 L0,120 Z" />
+      <path class="hero__wave-path--front"
+        d="M0,75 C180,35 340,110 500,75 C660,40 820,110 980,75 C1140,40 1300,110 1460,75
+           C1620,40 1780,110 1940,75 C2100,40 2260,110 2420,75 C2580,40 2740,110 2880,75
+           L2880,120 L0,120 Z" />
+    </svg>
   </section>
 
   <section id="produtos">
@@ -102,9 +92,21 @@
   <footer><p>© <span id="ano"></span> Bella Napoli Pizzaria</p></footer>
 
   <script>
-    window.PRODUTOS = [{"id": 1, "nome": "Margherita", "desc": "Molho, mussarela, manjericão", "preco": 45.0, "emoji": "🍕"}, {"id": 2, "nome": "Calabresa", "desc": "Calabresa fatiada e cebola", "preco": 48.0, "emoji": "🍕"}, {"id": 3, "nome": "Portuguesa", "desc": "Presunto, ovo, cebola, ervilha", "preco": 52.0, "emoji": "🍕"}, {"id": 4, "nome": "Quatro Queijos", "desc": "Mussarela, provolone, parmesão, gorgonzola", "preco": 55.0, "emoji": "🍕"}, {"id": 5, "nome": "Frango c/ Catupiry", "desc": "Frango desfiado e catupiry", "preco": 50.0, "emoji": "🍕"}, {"id": 6, "nome": "Chocolate", "desc": "Doce com chocolate ao leite", "preco": 42.0, "emoji": "🍫"}];
+    // Cada produto agora tem "img" apontando para o arquivo dentro da pasta /imagens.
+    // Salve suas fotos com esses nomes exatos (ou ajuste o campo "img" abaixo para o nome real do arquivo).
+    window.PRODUTOS = [
+      { id: 1, nome: "Margherita", desc: "Molho, mussarela, manjericão", preco: 32.00, img: "imagens/margherita.png" },
+      { id: 2, nome: "Calabresa", desc: "Calabresa fatiada e cebola", preco: 28.11, img: "imagens/calabresa.png" },
+      { id: 3, nome: "Portuguesa", desc: "Presunto, ovo, cebola, ervilha", preco: 46.98, img: "imagens/portuguesa.png" },
+      { id: 4, nome: "Quatro Queijos", desc: "Mussarela, provolone, parmesão, gorgonzola", preco: 31.00, img: "imagens/quatro-queijos.png" },
+      { id: 5, nome: "Frango c/ Catupiry", desc: "Frango desfiado e catupiry", preco: 41.00, img: "imagens/frango-catupiry.png" },
+      { id: 6, nome: "Chocolate", desc: "Doce com chocolate ao leite", preco: 42.00, img: "imagens/chocolate.png" },
+      { id: 7, nome: "refrigerante", desc: "Coca-cola, fata uva, e guarana ", preco: 14.00, img: "imagens/refrigerante.png" }
+    ];
     window.MOEDA = "R$";
     window.CTA = "Adicionar ao pedido";
+    // Imagem exibida caso o arquivo do produto não seja encontrado
+    window.IMG_FALLBACK = "imagens/placeholder.jpg";
   </script>
   <script src="script.js"></script>
 </body>

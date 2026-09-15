@@ -1,0 +1,39 @@
+.produto {
+  position: relative;
+}
+
+.produto-destaque {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: var(--accent);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: .65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.produto-categoria {
+  color: var(--accent);
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.produto-img {
+  transition: .4s;
+}
+
+.produto:hover .produto-img {
+  transform: scale(1.03);
+}
+
+.produto button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}

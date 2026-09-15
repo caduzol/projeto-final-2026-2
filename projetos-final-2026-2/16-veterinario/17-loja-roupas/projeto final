@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ZARÁ Boutique | Moda que combina com você</title>
+
+<meta name="description" content="ZARÁ Boutique — moda, estilo e personalidade em cada detalhe.">
+
+<link rel="stylesheet" href="styles.css"> </head>
+
+<body>
+
+<!-- CABEÇALHO -->
+
+<header class="site-header">
+
+<nav class="nav container">
+
+  <a href="#inicio" class="logo">
+    <span>✦</span> ZARÁ
+    <small>BOUTIQUE</small>
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+    ☰
+  </button>
+
+  <ul class="menu" id="menu">
+    <li><a href="#inicio">Início</a></li>
+    <li><a href="#colecao">Coleção</a></li>
+    <li><a href="#sobre">Sobre nós</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero" id="inicio">
+
+  <div class="hero-content">
+
+    <span class="tag">NOVA COLEÇÃO • 2026</span>
+
+    <h1>
+      Seu estilo.<br>
+      <strong>Sua essência.</strong>
+    </h1>
+
+    <p>
+      Descubra peças que combinam com você,
+      com elegância, conforto e personalidade.
+    </p>
+
+    <a href="#colecao" class="btn">
+      Explorar coleção →
+    </a>
+
+  </div>
+
+  <div class="hero-decoration">
+    ✦
+  </div>
+
+</section>
+
+
+<!-- BENEFÍCIOS -->
+<section class="beneficios">
+
+  <div class="container beneficios-grid">
+
+    <div>
+      <span>✦</span>
+      <strong>Qualidade</strong>
+      <p>Peças selecionadas</p>
+    </div>
+
+    <div>
+      <span>♡</span>
+      <strong>Estilo</strong>
+      <p>Moda para sua personalidade</p>
+    </div>
+
+    <div>
+      <span>✓</span>
+      <strong>Segurança</strong>
+      <p>Compra simples e confiável</p>
+    </div>
+
+    <div>
+      <span>⚡</span>
+      <strong>Agilidade</strong>
+      <p>Atendimento rápido</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- COLEÇÃO -->
+<section class="colecao" id="colecao">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>NOSSOS DESTAQUES</span>
+      <h2>Escolha o seu estilo</h2>
+      <p>
+        Confira algumas das peças favoritas da ZARÁ Boutique.
+      </p>
+    </div>
+
+    <div class="produtos" id="produtos-lista"></div>
+
+  </div>
+
+</section>
+
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+
+  <div class="container sobre-grid">
+
+    <div class="sobre-card">
+      <span>✦</span>
+      <h2>ZARÁ</h2>
+      <p>BOUTIQUE</p>
+    </div>
+
+    <div class="sobre-texto">
+
+      <span class="tag">SOBRE A ZARÁ</span>
+
+      <h2>
+        Moda não é apenas o que você veste.
+        <strong>É quem você é.</strong>
+      </h2>
+
+      <p>
+        A ZARÁ Boutique nasceu para trazer uma experiência
+        de moda moderna, elegante e acessível.
+      </p>
+
+      <p>
+        Cada peça é escolhida pensando em qualidade,
+        conforto e personalidade.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+
+  <div class="container">
+
+    <div class="section-title">
+      <span>FALE CONOSCO</span>
+      <h2>Entre em contato</h2>
+      <p>Tem alguma dúvida? Estamos aqui para ajudar.</p>
+    </div>
+
+    <form id="formContato" class="contact" novalidate>
+
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input
+          type="text"
+          id="nome"
+          placeholder="Digite seu nome"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="email">Seu e-mail</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="seuemail@email.com"
+          required
+        >
+      </div>
+
+      <div class="campo campo-full">
+        <label for="mensagem">Mensagem</label>
+        <textarea
+          id="mensagem"
+          rows="5"
+          placeholder="Digite sua mensagem..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn">
+        Enviar mensagem →
+      </button>
+
+      <div id="feedback" class="feedback"></div>
+
+    </form>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- BOTÃO DO CARRINHO -->
+
+<button class="carrinho-icone" id="abrirCarrinho" aria-label="Abrir carrinho"> 🛍️ <span id="qtd-carrinho">0</span> </button>
+
+<!-- CARRINHO -->
+
+<aside class="drawer" id="drawer">
+
+<div class="drawer-header">
+
+  <div>
+    <span>SEU PEDIDO</span>
+    <h2>Meu carrinho</h2>
+  </div>
+
+  <button id="fecharCarrinho" aria-label="Fechar carrinho">
+    ×
+  </button>
+
+</div>
+
+<div class="itens" id="carrinho-itens"></div>
+
+<div class="drawer-footer">
+
+  <div class="total">
+    <span>Total</span>
+    <strong id="total">R$ 0,00</strong>
+  </div>
+
+  <button
+    class="btn checkout"
+    id="finalizarPedido"
+  >
+    Finalizar pedido →
+  </button>
+
+</div>
+
+</aside>
+
+<!-- RODAPÉ -->
+
+<footer>
+
+<div class="container footer-content">
+
+  <div>
+    <div class="logo footer-logo">
+      <span>✦</span> ZARÁ
+      <small>BOUTIQUE</small>
+    </div>
+
+    <p>
+      Moda que combina com você.
+    </p>
+  </div>
+
+  <div class="footer-links">
+    <a href="#inicio">Início</a>
+    <a href="#colecao">Coleção</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+  </div>
+
+</div>
+
+<div class="copyright">
+  © <span id="ano"></span> ZARÁ Boutique. Todos os direitos reservados.
+</div>
+
+</footer>
+
+<!-- PRODUTOS -->
+
+<script>
+  window.PRODUTOS = [
+    {
+      id: 1,
+      nome: "Camiseta Essential",
+      desc: "Algodão premium",
+      preco: 59.90,
+      emoji: "👕"
+    },
+    {
+      id: 2,
+      nome: "Vestido Aurora",
+      desc: "Elegante e confortável",
+      preco: 129.90,
+      emoji: "👗"
+    },
+    {
+      id: 3,
+      nome: "Jeans Classic",
+      desc: "Modelagem moderna",
+      preco: 159.90,
+      emoji: "👖"
+    },
+    {
+      id: 4,
+      nome: "Jaqueta Urban",
+      desc: "Couro sintético premium",
+      preco: 249.90,
+      emoji: "🧥"
+    },
+    {
+      id: 5,
+      nome: "Tênis Urban White",
+      desc: "Casual e versátil",
+      preco: 189.90,
+      emoji: "👟"
+    },
+    {
+      id: 6,
+      nome: "Bolsa Milano",
+      desc: "Couro ecológico",
+      preco: 139.90,
+      emoji: "👜"
+    },
+    {
+      id: 7,
+      nome: "Saia Elegance",
+      desc: "Caimento moderno",
+      preco: 99.90,
+      emoji: "👗"
+    },
+    {
+      id: 8,
+      nome: "Cropped Glow",
+      desc: "Leve e estiloso",
+      preco: 69.90,
+      emoji: "👚"
+    },
+    {
+      id: 9,
+      nome: "Body Classic",
+      desc: "Confortável e versátil",
+      preco: 79.90,
+      emoji: "👚"
+    },
+    {
+      id: 10,
+      nome: "Moletom Comfort",
+      desc: "Quentinho e macio",
+      preco: 149.90,
+      emoji: "🧥"
+    },
+    {
+      id: 11,
+      nome: "Blusa de Frio Soft",
+      desc: "Ideal para dias frios",
+      preco: 119.90,
+      emoji: "🧶"
+    },
+    {
+      id: 12,
+      nome: "Short Casual",
+      desc: "Leve e confortável",
+      preco: 89.90,
+      emoji: "🩳"
+    },
+    {
+      id: 13,
+      nome: "Camisa Premium",
+      desc: "Visual elegante",
+      preco: 109.90,
+      emoji: "👔"
+    },
+    {
+      id: 14,
+      nome: "Conjunto Fashion",
+      desc: "Look completo",
+      preco: 179.90,
+      emoji: "👚"
+    },
+    {
+      id: 15,
+      nome: "Calça Wide Leg",
+      desc: "Modelagem ampla",
+      preco: 169.90,
+      emoji: "👖"
+    },
+    {
+      id: 16,
+      nome: "Blusa Tricot",
+      desc: "Tricot macio e elegante",
+      preco: 129.90,
+      emoji: "🧶"
+    },
+    {
+      id: 17,
+      nome: "Regata Basic",
+      desc: "Básica para qualquer look",
+      preco: 49.90,
+      emoji: "👚"
+    },
+    {
+      id: 18,
+      nome: "Cardigan Cozy",
+      desc: "Elegante e aconchegante",
+      preco: 139.90,
+      emoji: "🧥"
+    }
+  ];
+
+  window.MOEDA = "R$";
+  window.CTA = "Adicionar ao carrinho";
+</script>
+
+<script src="script.js"></script>
+
+</body> </html>

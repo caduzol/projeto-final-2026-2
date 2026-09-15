@@ -1,4 +1,3 @@
-
 // ========= Comum: menu mobile, ano no rodapé =========
 document.addEventListener('DOMContentLoaded', () => {
   // Preenche o ano automaticamente no footer
@@ -59,11 +58,23 @@ function moeda(v) {
   return window.MOEDA + ' ' + v.toFixed(2).replace('.', ',');
 }
 
+// Se a imagem do produto não carregar, troca pelo placeholder (ou esconde)
+function imgErro(imgEl) {
+  const fallback = window.IMG_FALLBACK;
+  if (fallback && imgEl.src.indexOf(fallback) === -1) {
+    imgEl.src = fallback;
+  } else {
+    imgEl.style.display = 'none';
+  }
+}
+
 // Renderiza os produtos disponíveis
 function renderizarProdutos() {
   listaProdutos.innerHTML = window.PRODUTOS.map(p => `
     <article class="produto">
-      <div class="img">${p.emoji}</div>
+      <div class="img-wrap">
+        <img src="${p.img}" alt="${p.nome}" loading="lazy" onerror="imgErro(this)" />
+      </div>
       <h3>${p.nome}</h3>
       <p>${p.desc}</p>
       <div class="preco">${moeda(p.preco)}</div>
@@ -105,8 +116,9 @@ function atualizarCarrinho() {
     total += sub;
     return `
       <div class="item-c">
-        <div>
-          <strong>${p.emoji} ${p.nome}</strong><br/>
+        <img src="${p.img}" alt="${p.nome}" onerror="imgErro(this)" />
+        <div style="flex:1;">
+          <strong>${p.nome}</strong><br/>
           <small>${carrinho[id]} × ${moeda(p.preco)} = ${moeda(sub)}</small>
         </div>
         <button class="remover" onclick="remover(${p.id})" title="Remover">✕</button>
